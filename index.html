@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Life Plan Buddy</title>
+  <meta name="description" content="Henston Clint Isidera — Financial Advisor at PRU Life UK. Protection, health, & investment plans. Book a consultation.">
+  <link rel="icon" type="image/ico" href="favicon.ico">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root{
+      --pru-red:#b80000;
+      --pru-red-dark:#970000;
+      --muted:#6b7280;
+      --card-radius:14px;
+      --max-width:1100px;
+      --accent:#25D366;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin:0; color:#111; background:#fff;}
+    a{color:inherit; text-decoration:none}
+    header{background:var(--pru-red); color:#fff; padding:16px 12px; position:sticky; top:0; z-index:60; box-shadow:0 6px 20px rgba(0,0,0,0.08)}
+    .container{max-width:var(--max-width); margin:0 auto; padding:0 16px;}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:12px}
+    .brand{display:flex; align-items:center; gap:12px}
+    .brand .logo{width:46px; height:46px; border-radius:10px; background:#fff; color:var(--pru-red); display:flex; align-items:center; justify-content:center; font-weight:800}
+    .nav-links{display:flex; gap:16px; align-items:center}
+    .nav-links a{color:rgba(255,255,255,0.95); font-weight:600; font-size:0.95rem}
+    /* Hero */
+    .hero{padding:44px 0; background:linear-gradient(180deg,#fff 0%, #fff6f6 100%)}
+    .hero-grid{display:grid; grid-template-columns:1fr; gap:20px; align-items:center; max-width:var(--max-width); margin:0 auto; padding:0 16px}
+    .hero-left h1{font-size:2.1rem; margin:0 0 10px; line-height:1.05}
+    .lead{color:var(--muted); font-size:1.02rem; margin:8px 0 14px}
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:999px; font-weight:700; cursor:pointer; border:0}
+    .btn-primary{background:var(--pru-red); color:#fff; box-shadow:0 8px 24px rgba(184,0,0,0.12)}
+    .btn-outline{background:transparent; border:2px solid var(--pru-red); color:var(--pru-red)}
+    .stats{display:flex; gap:12px; margin-top:14px; flex-wrap:wrap}
+    .stat{background:#fff; padding:10px 12px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.05); min-width:110px; text-align:center}
+    /* Sections */
+    section{padding:36px 0}
+    h2.section-title{color:var(--pru-red); margin:0 0 12px; font-size:1.4rem}
+    p.muted{color:var(--muted); margin:0 0 12px}
+    .two-col{display:block; gap:18px}
+    .card{background:#fff; border-radius:var(--card-radius); padding:18px; box-shadow:0 8px 28px rgba(15,15,15,0.06)}
+    .plans-grid{display:grid; grid-template-columns:1fr; gap:16px}
+    .plan{border-radius:12px; padding:16px; background:#fff; border:1px solid #f0f0f0; transition:transform .28s ease, box-shadow .28s ease}
+    .plan:hover{transform:translateY(-8px); box-shadow:0 20px 40px rgba(0,0,0,0.08)}
+    .plan h3{margin:0 0 8px; display:flex; gap:10px; align-items:center}
+    .icon{width:40px;height:40px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:#fff;color:var(--pru-red);box-shadow:0 6px 18px rgba(0,0,0,0.05);font-size:1.1rem}
+    /* comparison table */
+    .table-wrap{overflow-x:auto}
+    table{width:100%;border-collapse:collapse;font-size:0.95rem}
+    thead th{background:var(--pru-red); color:#fff; padding:10px; text-align:left}
+    td, th{border:1px solid #eee; padding:10px; vertical-align:top}
+    /* Connect cards */
+    .cards{display:flex; gap:16px; flex-wrap:wrap; justify-content:center; margin-top:12px}
+    .connect-card{flex:1 1 260px; max-width:340px; min-height:120px; border-radius:12px; padding:18px; display:flex; flex-direction:column; gap:8px; justify-content:center; transition:transform .28s ease, box-shadow .28s ease; cursor:pointer}
+    .connect-card:hover{transform:translateY(-8px) scale(1.02); box-shadow:0 20px 35px rgba(0,0,0,0.12)}
+    .connect-card.red{background:linear-gradient(180deg,var(--pru-red),var(--pru-red-dark)); color:#fff}
+    .connect-card.white{background:#fff; color:#111; border:1px solid rgba(0,0,0,0.06)}
+    .connect-card h3{margin:0; font-size:1.05rem}
+    .small{font-size:0.95rem}
+    /* sticky chat bar and call */
+    .sticky-bar{position:fixed; bottom:18px; left:50%; transform:translateX(-50%); display:flex; gap:10px; z-index:90}
+    .sticky-bar a{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:999px; color:#fff; font-weight:700; box-shadow:0 10px 30px rgba(0,0,0,0.12)}
+    .wa{background:#25D366}
+    .msgr{background:#0084ff}
+    .email{background:var(--pru-red)}
+    .callbtn{position:fixed; right:18px; bottom:120px; background:var(--pru-red); color:#fff; padding:14px 16px; border-radius:60px; box-shadow:0 14px 36px rgba(0,0,0,0.18); z-index:95; font-weight:800}
+    /* map */
+    .map-wrap iframe{width:100%; height:360px; border:0; border-radius:12px}
+    /* footer */
+    footer{background:#0f1724; color:#d1d5db; padding:28px 0; margin-top:28px}
+    footer a{color:#fff; text-decoration:underline}
+    /* responsive */
+    @media(min-width:760px){
+      .hero-grid{grid-template-columns:1fr 420px; align-items:center}
+      .two-col{display:grid; grid-template-columns:2fr 1fr; gap:22px}
+      .plans-grid{grid-template-columns:repeat(2,1fr)}
+      .cards{justify-content:flex-start}
+    }
+    @media(min-width:1024px){
+      .plans-grid{grid-template-columns:repeat(3,1fr)}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">PRU</div>
+        <div>
+          <div style="font-weight:800">Henston Clint Isidera</div>
+          <div style="font-size:0.92rem; opacity:0.95">Financial Advisor — PRU Life UK</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#plans">Plans</a>
+        <a href="#comparison">Comparison</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid container">
+      <div>
+        <h1>Build your future with clarity & protection</h1>
+        <p class="lead">Hi — I’m <strong>Henston Clint Isidera</strong>, a licensed Financial Advisor at <strong>PRU Life UK</strong> with <em>Ascend Global Summit Life Insurance Agency</em>. Tutulungan kita with Taglish explanations to secure your family's future through protection, health, and investments.</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap">
+          <button class="btn btn-primary" onclick="location.href='#contact'">Get a Free Quote</button>
+          <button class="btn btn-outline" onclick="location.href='#plans'">See Plans & Benefits</button>
+        </div>
+        <div class="stats" aria-hidden="true">
+          <div class="stat"><div style="font-weight:800">200+</div><div class="small" style="color:var(--muted)">Clients Helped</div></div>
+          <div class="stat"><div style="font-weight:800">9 yrs</div><div class="small" style="color:var(--muted)">Experience</div></div>
+          <div class="stat"><div style="font-weight:800">&lt;24h</div><div class="small" style="color:var(--muted)">Avg Response</div></div>
+        </div>
+      </div>
+
+      <div class="card" style="text-align:center;">
+        <h3 style="margin:0 0 8px 0">Quick Contact</h3>
+        <p class="small" style="margin:0 0 12px 0; color:var(--muted)">Prefer to message? Click any option below.</p>
+        <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap">
+          <a class="btn" href="https://wa.me/639271495996" target="_blank" style="background:#25D366; color:#fff; border-radius:999px;">📱 WhatsApp</a>
+          <a class="btn" href="https://m.me/henstonclint.isidera" target="_blank" style="background:#0084ff; color:#fff; border-radius:999px;">💬 Messenger</a>
+        </div>
+        <div style="margin-top:12px">
+          <a class="btn btn-primary" href="tel:+639271495996" style="border-radius:999px">📞 Call Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container two-col">
+      <div>
+        <h2 class="section-title">About Me</h2>
+        <p class="muted">I’m Henston — youth coach, teacher, and part-time financial advisor with PRU Life UK. Through <strong>Ascend Global Summit Life Insurance Agency</strong>, we help Filipinos make practical, faith-aligned financial choices. Taglish-friendly, no jargon.</p>
+
+        <h3 style="margin-top:16px">How I Help</h3>
+        <ul style="padding-left:18px; color:var(--muted); margin-top:6px">
+          <li>Protection planning (life, accidental, critical illness)</li>
+          <li>Goal-based savings & investment (VUL & traditional)</li>
+          <li>Policy review, claims support & long-term planning</li>
+        </ul>
+      </div>
+
+      <aside class="card">
+        <h3 style="margin:0 0 6px 0">Quick Details</h3>
+        <div class="small" style="color:var(--muted); margin-bottom:8px">Contact & Agency</div>
+        <div style="display:flex; flex-direction:column; gap:8px">
+          <div>📞 <a href="tel:+639271495996">0927 149 5996</a></div>
+          <div>📧 <a href="mailto:plukhenstonclintisidera@gmail.com">plukhenstonclintisidera@gmail.com</a></div>
+          <div>🏢 Ascend Global Summit Life Insurance Agency</div>
+          <div>🔗 <a href="https://www.facebook.com/henstonclint.isidera/" target="_blank">facebook.com/henstonclint.isidera</a></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- PLANS -->
+  <section id="plans" style="background:#fff8f8;">
+    <div class="container">
+      <h2 class="section-title">Plans & Benefits</h2>
+      <p class="muted">Short descriptions of the core plans I recommend. Each plan is customizable with riders and funding options to fit your goals.</p>
+
+      <div class="plans-grid" style="margin-top:12px;">
+        <div class="plan">
+          <h3><span class="icon"><i class="fa-solid fa-briefcase"></i></span> PRULink Assurance Account Plus (PAA+)</h3>
+          <p class="small muted">Life protection + investment. Part of premium grows in funds while maintaining life coverage.</p>
+          <ul style="padding-left:18px; color:var(--muted); margin-top:8px">
+            <li>Sum assured + investment value</li>
+            <li>Optional riders: ADD, Hospital Income</li>
+            <li>Flexible fund allocation</li>
+          </ul>
+        </div>
+
+        <div class="plan">
+          <h3><span class="icon"><i class="fa-solid fa-crown"></i></span> PRULink Elite</h3>
+          <p class="small muted">Premium investment-linked plan for wealth accumulation, legacy planning, and flexible premium options.</p>
+          <ul style="padding-left:18px; color:var(--muted); margin-top:8px">
+            <li>Higher fund access & switching</li>
+            <li>Estate & legacy features</li>
+            <li>Customizable premium schedules</li>
+          </ul>
+        </div>
+
+        <div class="plan">
+          <h3><span class="icon"><i class="fa-solid fa-heart-pulse"></i></span> PRUHealth Prime</h3>
+          <p class="small muted">Comprehensive health & critical illness protection — early/late stage benefits, hospital income, and recovery support.</p>
+          <ul style="padding-left:18px; color:var(--muted); margin-top:8px">
+            <li>Early stage cancer benefit</li>
+            <li>Late stage CI coverage</li>
+            <li>Hospital & post-hospital cash support</li>
+          </ul>
+        </div>
+
+        <div class="plan">
+          <h3><span class="icon"><i class="fa-solid fa-coins"></i></span> PRUSteady Income</h3>
+          <p class="small muted">Savings + protection. Provides guaranteed cash payouts at selected periods while maintaining life coverage.</p>
+          <ul style="padding-left:18px; color:var(--muted); margin-top:8px">
+            <li>Guaranteed payouts</li>
+            <li>Protection for beneficiaries</li>
+          </ul>
+        </div>
+
+        <div class="plan">
+          <h3><span class="icon"><i class="fa-solid fa-users"></i></span> PRUMiL</h3>
+          <p class="small muted">Affordable life insurance with flexible premiums — ideal for young professionals and starting families.</p>
+          <ul style="padding-left:18px; color:var(--muted); margin-top:8px">
+            <li>Budget-friendly premiums</li>
+            <li>Core life protection</li>
+          </ul>
+        </div>
+
+        <div class="plan">
+          <h3><span class="icon"><i class="fa-solid fa-hourglass"></i></span> PRU Lifetime Income</h3>
+          <p class="small muted">Provides a guaranteed lifetime income stream while keeping life protection for your loved ones.</p>
+          <ul style="padding-left:18px; color:var(--muted); margin-top:8px">
+            <li>Long-term income guarantees</li>
+            <li>Ideal for retirement planning</li>
+          </ul>
+        </div>
+
+        <div class="plan">
+          <h3><span class="icon"><i class="fa-solid fa-shield-halved"></i></span> Riders & Add-ons</h3>
+          <p class="small muted">Popular riders to strengthen your main plan:</p>
+          <ul style="padding-left:18px; color:var(--muted); margin-top:8px">
+            <li>Accidental Death & Disablement (ADD)</li>
+            <li>Total & Permanent Disability (TPD)</li>
+            <li>Hospital Income Benefit</li>
+            <li>Accelerated Life Care / Critical Illness riders</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison -->
+  <section id="comparison">
+    <div class="container">
+      <h2 class="section-title">Plan Comparison</h2>
+      <p class="muted">A quick side-by-side to help you choose.</p>
+      <div class="table-wrap" style="margin-top:12px">
+        <table>
+          <thead>
+            <tr>
+              <th>Plan</th>
+              <th>Coverage</th>
+              <th>Key Benefits</th>
+              <th>Payment Terms</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>PAA+</strong></td>
+              <td>Life + Investment</td>
+              <td>Accident benefits, life protection, investment growth</td>
+              <td>Flexible (annual/quarterly)</td>
+            </tr>
+            <tr>
+              <td><strong>Elite</strong></td>
+              <td>Premium Life + Investment</td>
+              <td>High-value protection, estate planning, flexible investments</td>
+              <td>Customizable</td>
+            </tr>
+            <tr>
+              <td><strong>PRUHealth Prime</strong></td>
+              <td>Critical Illness & Health</td>
+              <td>Early & late stage CI benefits, hospital income</td>
+              <td>Regular premium</td>
+            </tr>
+            <tr>
+              <td><strong>PRUSteady Income</strong></td>
+              <td>Life + Guaranteed Payouts</td>
+              <td>Steady income for a set period + protection</td>
+              <td>Fixed pay terms</td>
+            </tr>
+            <tr>
+              <td><strong>PRUMiL</strong></td>
+              <td>Affordable Life</td>
+              <td>Budget-friendly premiums, core protection</td>
+              <td>Flexible</td>
+            </tr>
+            <tr>
+              <td><strong>PRU Lifetime Income</strong></td>
+              <td>Lifetime Income</td>
+              <td>Guaranteed lifetime payouts, retirement focus</td>
+              <td>Varies by product</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="text-align:center; margin-top:16px">
+        <button class="btn btn-primary" onclick="location.href='#contact'">Book your FREE Consultation</button>
+        <div class="small" style="margin-top:8px; color:var(--muted)">No hard sell — we’ll discuss what’s right for your family.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schedule / Connect -->
+  <section id="schedule" style="background:#fff8f8;">
+    <div class="container">
+      <h2 class="section-title">Let’s Connect — Schedule a Call</h2>
+      <p class="muted">Choose the best way to reach me — I’m available Mon–Sat. I can meet face-to-face or via Zoom.</p>
+
+      <div class="cards" role="list" aria-label="Schedule options">
+        <a class="connect-card red" href="tel:+639271495996" role="listitem" aria-label="Phone call">
+          <h3>📱 Phone Call</h3>
+          <p class="small">Tap to call me directly at <strong>0927 149 5996</strong>.</p>
+        </a>
+
+        <a class="connect-card white" href="https://maps.google.com?q=Ascend+Global+Summit+Life+Insurance+Agency" target="_blank" rel="noopener noreferrer" role="listitem" aria-label="Face to face">
+          <h3>🤝 Face-to-Face Meeting</h3>
+          <p class="small">Visit Ascend Global Summit Life Insurance Agency — we can meet in person (Mon–Sat).</p>
+        </a>
+
+        <a class="connect-card red" href="mailto:plukhenstonclintisidera@gmail.com?subject=Request%20for%20Zoom%20Meeting" role="listitem" aria-label="Zoom meeting">
+          <h3>💻 Zoom Meeting</h3>
+          <p class="small">Click to email me a Zoom meeting request — we’ll confirm schedule and send the link.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map & Contact -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Find Our Office & Contact</h2>
+      <p class="muted small">Ascend Global Summit Life Insurance Agency — Open Mon–Sat. We can meet face-to-face or via Zoom.</p>
+
+      <div class="map-wrap" style="margin-top:12px">
+        <iframe loading="lazy" allowfullscreen src="https://www.google.com/maps?q=Ascend+Global+Summit+Life+Insurance+Agency&output=embed"></iframe>
+      </div>
+
+      <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap; align-items:center">
+        <a class="btn btn-outline" href="https://www.google.com/maps?q=Ascend+Global+Summit+Life+Insurance+Agency" target="_blank">Open in Google Maps</a>
+        <a class="btn" href="mailto:plukhenstonclintisidera@gmail.com?subject=Request%20for%20Zoom%20Meeting">Book a Zoom Meeting (Email)</a>
+        <a class="btn" href="tel:+639271495996" style="background:var(--pru-red); color:#fff">Call: 0927 149 5996</a>
+      </div>
+
+      <div style="margin-top:18px; display:flex; gap:8px; flex-wrap:wrap">
+        <a class="btn" href="https://wa.me/639271495996" style="background:#25D366; color:#fff">📱 WhatsApp</a>
+        <a class="btn" href="https://m.me/henstonclint.isidera" style="background:#0084ff; color:#fff">💬 Messenger</a>
+        <a class="btn btn-outline" href="mailto:plukhenstonclintisidera@gmail.com">📧 Email</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky chat bar & Call Now -->
+  <div class="sticky-bar" aria-hidden="false">
+    <a class="wa" href="https://wa.me/639271495996" target="_blank" rel="noopener noreferrer">📱 WhatsApp</a>
+    <a class="msgr" href="https://m.me/henstonclint.isidera" target="_blank" rel="noopener noreferrer">💬 Messenger</a>
+    <a class="email" href="mailto:plukhenstonclintisidera@gmail.com">📧 Email</a>
+  </div>
+
+  <a class="callbtn" href="tel:+639271495996" title="Call Now">📞 Call Now</a>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+      <div>
+        <div style="font-weight:800; color:#fff">Henston Clint Isidera</div>
+        <div class="small" style="color:#cbd5e1">Financial Advisor — PRU Life UK</div>
+        <div class="small" style="color:#9ca3af">Ascend Global Summit Life Insurance Agency</div>
+      </div>
+      <div style="text-align:right">
+        <div>📧 <a href="mailto:plukhenstonclintisidera@gmail.com">plukhenstonclintisidera@gmail.com</a></div>
+        <div style="margin-top:6px; color:#9ca3af">© <span id="year"></span> Henston Clint Isidera — All rights reserved</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Optional: add small tap effect on mobile for connect-card to show active state
+    document.querySelectorAll('.connect-card').forEach(c => {
+      c.addEventListener('touchstart', () => c.style.transform = 'translateY(-6px) scale(1.01)');
+      c.addEventListener('touchend', () => c.style.transform = '');
+    });
+  </script>
+</body>
+</html>
